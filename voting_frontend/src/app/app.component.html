@@ -7,7 +7,7 @@
 <button (click)="state = viewState.STUDENT_QUESTION">Student</button>
 <button (click)="state = viewState.QUESTION">Question</button>
 <button (click)="state = viewState.CHAT">Chat</button>
-<button (click)="state = viewState.NOTE">Note</button>
+<!-- <button (click)="state = viewState.NOTE">Note</button> -->
 - State {{state}}
 <br>
 <div [ngSwitch]="state">
@@ -28,7 +28,7 @@
   <div *ngSwitchCase="viewState.CHAT">
     <app-chat></app-chat>
   </div>
-  <div *ngSwitchCase="viewState.NOTE">
+  <!--<div *ngSwitchCase="viewState.NOTE">
     <app-note></app-note>
-  </div>
+  </div>-->
 </div>
