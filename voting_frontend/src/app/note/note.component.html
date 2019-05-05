@@ -1,0 +1,15 @@
+Notes:
+<hr>
+<br>
+<div *ngFor="let note of notes">
+  <app-note-item [note]="note"
+  (deleteNote)="deleteTask($event)" ></app-note-item>
+  <br>
+</div>
+title
+<input #title>
+<br>
+subtitle
+<input #subtitle>
+<button (click)="add(title.value, subtitle.value);
+title.value = ''; subtitle.value = ''">Add</button>

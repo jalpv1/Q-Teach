@@ -1,12 +1,34 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
     Welcome to {{title}}.
   </h1>
 </div>
-<div style="text-align:center">
-  <input #message>
-  <button (click)="sendMessage(message.value)">Send Message</button>
-  <app-question></app-question>
-  <toaster-container></toaster-container>
+<button (click)="state = viewState.MAIN_QUESTION">Main</button>
+<button (click)="state = viewState.STUDENT_QUESTION">Student</button>
+<button (click)="state = viewState.QUESTION">Question</button>
+<button (click)="state = viewState.CHAT">Chat</button>
+<button (click)="state = viewState.NOTE">Note</button>
+- State {{state}}
+<br>
+<div [ngSwitch]="state">
+  <div *ngSwitchCase="viewState.MAIN_QUESTION">
+    <div style="text-align:center">
+      <input #message>
+      <button (click)="sendMessage(message.value)">Send My Message</button>
+      <app-question></app-question>
+      <toaster-container></toaster-container>
+    </div>
+  </div>
+  <div *ngSwitchCase="viewState.STUDENT_QUESTION">
+    <app-student-question-list></app-student-question-list>
+  </div>
+  <div *ngSwitchCase="viewState.QUESTION">
+    <app-question-finder></app-question-finder>
+  </div>
+  <div *ngSwitchCase="viewState.CHAT">
+    <app-chat></app-chat>
+  </div>
+  <div *ngSwitchCase="viewState.NOTE">
+    <app-note></app-note>
+  </div>
 </div>

@@ -1,1 +1,0 @@
-# ipz_project_avrk

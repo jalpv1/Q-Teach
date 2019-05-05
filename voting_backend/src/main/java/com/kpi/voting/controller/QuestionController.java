@@ -31,4 +31,10 @@ public class QuestionController {
         }
     }
 
+    @GetMapping("/{id}")
+    public @ResponseBody
+    Question getQuestionById(@PathVariable Long id) {
+        return questionService.getQuestion(id);
+    }
+
 }

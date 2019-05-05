@@ -1,0 +1,18 @@
+<input #id>
+<button (click)="find(id.value)">Find</button>
+<br>
+{{question | json}}
+<br>
+{{question.id}}
+<br>
+{{question.title}}
+<br>
+{{question.voteNoCount}}
+<br>
+{{question.voteYesCount}}
+<br>
+{{question.createdAt}}
+<br>
+
+<app-student-question-item *ngIf="studentQuestion"
+                           [studentQuestion]="studentQuestion"></app-student-question-item>

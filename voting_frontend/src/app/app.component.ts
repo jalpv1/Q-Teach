@@ -5,6 +5,10 @@ import {QuestionService} from './services/question.service';
 import {HttpClient} from '@angular/common/http';
 import {ToasterService} from 'angular2-toaster';
 
+export enum ViewState {
+  MAIN_QUESTION, STUDENT_QUESTION, QUESTION, CHAT, NOTE
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +17,8 @@ import {ToasterService} from 'angular2-toaster';
 export class AppComponent implements OnInit, OnDestroy {
 
   title = 'Voting Application';
+  readonly viewState = ViewState;
+  state: ViewState = ViewState.MAIN_QUESTION;
   private intervalSubscription: Unsubscribable;
 
   constructor(private userService: UserService,

@@ -1,0 +1,7 @@
+<div *ngFor="let message of messages">
+  {{message}}
+  <br>
+</div>
+<input #message>
+<button (click)="sendMessage(message.value); message.value = ''"
+        [disabled]="message.value === ''">Sent</button>
