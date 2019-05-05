@@ -27,8 +27,18 @@ public class ShellQuestionController {
 
     @ShellMethod("Print Chat Messages.")
     public void printMessages() {
-        chatService.getAllMessages().forEach(System.out::println);
+        chatService.sortByLikes().forEach(System.out::println);
     }
+    @ShellMethod("Create message to tutor")
+    public void cqs(String question) {
+        final Long id = chatService.createQuestion(question);
+        if (id == null) {
+            System.out.println("Something went wrong.");
+            return;
+        }
+        System.out.println("Created chat question with id = " + id);
+    }
+
 
 
 }

@@ -7,6 +7,7 @@ import { QuestionComponent } from './question/question.component';
 import { AnswerComponent } from './answer/answer.component';
 import {ToasterModule, ToasterService} from 'angular2-toaster';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+//import {ButtonInfoComponent} from './buttonInfo/button.component';
 
 
 @NgModule({
