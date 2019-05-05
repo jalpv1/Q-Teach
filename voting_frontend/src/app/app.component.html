@@ -1,14 +1,16 @@
 <div style="text-align:center">
-  <h1>
-    Welcome to {{title}}.
-  </h1>
+  <a (click)="state = viewState.MAIN_QUESTION">
+    <h1>
+      Welcome to {{title}}
+    </h1>
+  </a>
 </div>
-<button (click)="state = viewState.MAIN_QUESTION">Main</button>
+<!--<button (click)="state = viewState.MAIN_QUESTION">Main</button>-->
 <button (click)="state = viewState.STUDENT_QUESTION">Student</button>
 <button (click)="state = viewState.QUESTION">Question</button>
 <button (click)="state = viewState.CHAT">Chat</button>
 <!-- <button (click)="state = viewState.NOTE">Note</button> -->
-- State {{state}}
+<!-- - State {{state}}-->
 <br>
 <div [ngSwitch]="state">
   <div *ngSwitchCase="viewState.MAIN_QUESTION">
