@@ -12,7 +12,7 @@ import java.util.List;
  * Created on 08.04.2019.
  */
 @Repository
-public class ChatRepository {
+public class  ChatRepository {
 
     @Autowired
     private ChatStore chatStore;

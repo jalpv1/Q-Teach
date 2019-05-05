@@ -16,8 +16,8 @@ export class QuestionService {
   }
 
   public getLastQuestion(): void {
-    this.http.get<Question>('/question/last')
-      .subscribe(question => this.question.next(question));
+    //this.http.get<Question>('/question/last')
+     // .subscribe(question => this.question.next(question));
   }
 
   public answerQuestion(question: Question, answer: Answer<any>): Observable<any> {
