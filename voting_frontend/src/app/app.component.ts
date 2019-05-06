@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import {ToasterService} from 'angular2-toaster';
 
 export enum ViewState {
-  MAIN_QUESTION, STUDENT_QUESTION, QUESTION, CHAT, NOTE
+  MAIN_QUESTION, STUDENT_QUESTION, QUESTION, CHAT
 }
 
 @Component({
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   sendMessage(message: string): void {
     this.httpClient.put('chat', message)
-      .subscribe(() => this.toaster.pop('success', 'Message sended.'));
+      .subscribe(() => this.toaster.pop('success', 'Message sent.'));
   }
 
   ngOnDestroy(): void {
