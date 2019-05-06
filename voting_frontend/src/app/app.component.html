@@ -4,10 +4,73 @@
     Welcome to {{title}}.
   </h1>
 </div>
+<script>
+
+</script>
 <div style="text-align:center">
   <input #message>
   <button (click)="sendMessage(message.value)">Send Message</button>
+  <button  (click)=print()>INFO</button>
   <app-question></app-question>
   <app-autoquestion></app-autoquestion>
   <toaster-container></toaster-container>
+</div>
+
+<div id="inform" >
+  <h2>Підготовка до практики!</h2>
+  1) Встановити JDK<br>
+  2) Встановити Jidea Ultimate!!! (<a href="https://www.jetbrains.com/idea/download/#section=windows)">https://www.jetbrains.com/idea/download/#section=windows)<br></a>
+  3) Створити Spring Boot проект (<a href="https://www.youtube.com/watch?v=9isF4FK9AMg">https://www.youtube.com/watch?v=9isF4FK9AMg)</a><br>
+  <br>
+  Практика.<br>
+  1) Робота в команді!<br>
+  2) На практичних заняттях:<br>
+  - розбираємо архітектуру<br>
+  - вивчаємо нові потрібні інструменти.<br>
+  <br>
+  <b>Завдання:</b><br>
+  Розширити проект який бачили на 1 лекції.<br>
+  Кожна команда має добавити нові можливості (Історія голосування, проходження тестів, .....)<br>
+  Функціонал в команд можуть повторюватися!<br>
+  Завдання для практик<br>
+  1) Ознайомитися з Spring, Spring Shell, DI.<br>
+  Створити трьох рівневу архітектуру: Simple Data Source (in memory) <- Domain (Бізнес логіка) <- Presentation.<br>
+  Продумати які нові можливості ви б хотіли реалізувати та реалізувати їх.<br>
+  2) Заміняємо Prsentation Layer розробляємо  REST API (Spring Shell -> Spring MVC).<br>
+  Отримуємо проект (voter який бачили на лекції).<br>
+  3) Заміняємо Data Source Layer підключаємо Spring Data (ORM). Добавляємо базу даних.<br>
+  4) Створюємо WEB Client для REST API (Angular 2+).<br>
+  5) Код ревю, ………….<br>
+  <br>
+
+  <h3>Лекція 1</h3>
+  IOC, DI (<a href="https://www.youtube.com/watch?v=ZdBwF26oWhs)">https://www.youtube.com/watch?v=ZdBwF26oWhs)</a><br>
+  Spring (<a href="https://www.youtube.com/watch?v=3wBteulZaAs&list=PL6jg6AGdCNaWF-sUH2QDudBRXo54zuN1t)">https://www.youtube.com/watch?v=3wBteulZaAs&list=PL6jg6AGdCNaWF-sUH2QDudBRXo54zuN1t)</a><br>
+
+  <h3>Лекція 2</h3>
+  <a href="https://ru.wikipedia.org/wiki/REST">https://ru.wikipedia.org/wiki/REST</a><br>
+  <a href="https://habr.com/ru/post/336816/"> https://habr.com/ru/post/336816/</a><br>
+
+  <h3>Лекція 3</h3>
+  ORM<br>
+  <a href="https://www.youtube.com/watch?v=H8ahIMSPQbI">https://www.youtube.com/watch?v=H8ahIMSPQbI</a><br>
+  Create simple project<br>
+  <a href="https://www.youtube.com/watch?v=e792dmGXHro">https://www.youtube.com/watch?v=e792dmGXHro</a><br>
+  <br>
+  Migration tool<br>
+  <a href="https://www.youtube.com/watch?v=FDDxDWUGvhs">https://www.youtube.com/watch?v=FDDxDWUGvhs</a><br>
+  <a href="https://www.youtube.com/watch?v=GP0smZCISI8">https://www.youtube.com/watch?v=GP0smZCISI8</a><br>
+  <br>
+  Another DB tools<br>
+  <a href="https://habr.com/ru/post/117974/">https://habr.com/ru/post/117974/</a><br>
+  <a href="https://habr.com/ru/post/247885/">https://habr.com/ru/post/247885/</a><br>
+  <br>
+  Links:<br>
+  <a href="https://www.youtube.com/watch?v=bkDUIIho70o">https://www.youtube.com/watch?v=bkDUIIho70o</a><br>
+
+  <h3>Лекція 4</h3>
+  <a href="https://www.youtube.com/watch?v=_aJABfbm-UA">https://www.youtube.com/watch?v=_aJABfbm-UA</a><br>
+  <a href="https://www.youtube.com/watch?v=t3KH5LXHi0s&list=PLqHlAwsJRxANlSuRSgldPWsbNkPqVBeFp">https://www.youtube.com/watch?v=t3KH5LXHi0s&list=PLqHlAwsJRxANlSuRSgldPWsbNkPqVBeFp</a><br>
+  <a href="https://www.youtube.com/watch?v=cKod7WX0qUc&list=PLqHlAwsJRxANhhHlAlazVrbX69UMJ9Bcu">https://www.youtube.com/watch?v=cKod7WX0qUc&list=PLqHlAwsJRxANhhHlAlazVrbX69UMJ9Bcu</a><br>
+<button id="back" (click)=back()>BACK</button>
 </div>

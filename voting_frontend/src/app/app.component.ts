@@ -10,10 +10,13 @@ import {ToasterService} from 'angular2-toaster';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+
 export class AppComponent implements OnInit, OnDestroy {
 
   title = 'Voting Application';
   private intervalSubscription: Unsubscribable;
+
 
   constructor(private userService: UserService,
               private questionService: QuestionService,
@@ -30,6 +33,15 @@ export class AppComponent implements OnInit, OnDestroy {
     this.httpClient.put('chat', message)
       .subscribe(() => this.toaster.pop('success', 'Message sended.'));
   }
+  print(): void{
+    var element = document.getElementById('inform');
+    element.style.display = "block";
+  }
+  back(): void{
+    var element = document.getElementById('inform');
+    element.style.display = "none";
+  }
+
 
   ngOnDestroy(): void {
     if (this.intervalSubscription) {
