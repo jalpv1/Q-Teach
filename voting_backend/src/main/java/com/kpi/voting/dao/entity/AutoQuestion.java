@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name = "autoQuestion")
 @Cacheable(false)
-public class AutoQuestion {
+public class AutoQuestion implements Comparable<AutoQuestion>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -44,7 +44,10 @@ public class AutoQuestion {
     }
 
 
-
+    @Override
+    public int compareTo(AutoQuestion o) {
+        return getCreatedAt().compareTo(o.getCreatedAt());
+    }
     public int getVoteYesCount() {
         return voteYesCount;
     }
