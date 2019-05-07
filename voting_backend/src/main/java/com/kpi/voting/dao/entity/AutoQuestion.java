@@ -1,5 +1,6 @@
 package com.kpi.voting.dao.entity;
 
+//import jdk.jfr.BooleanFlag;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Formula;
@@ -9,9 +10,9 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name = "question")
+@Table(name = "autoQuestion")
 @Cacheable(false)
-public class Question {
+public class AutoQuestion implements Comparable<AutoQuestion>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,7 +20,7 @@ public class Question {
     @Column(length = 255)
     private String title;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     private Date createdAt;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
@@ -32,11 +33,21 @@ public class Question {
     @Fetch(FetchMode.SUBSELECT)
     @Formula("(select count(*) from vote where vote.answer = false)")
     private int voteNoCount;
+    //@BooleanFlag
+    private boolean asked = false;
+    public boolean isAsked() {
+        return asked;
+    }
 
-    @Column()
-    private Date autoTime;
+    public void setAsked(boolean asked) {
+        this.asked = asked;
+    }
 
 
+    @Override
+    public int compareTo(AutoQuestion o) {
+        return getCreatedAt().compareTo(o.getCreatedAt());
+    }
     public int getVoteYesCount() {
         return voteYesCount;
     }
@@ -89,6 +100,4 @@ public class Question {
                 "Yes: " + this.getVoteYesCount() + "\tNo: " + this.getVoteNoCount();
         return toString;
     }
-
-
 }
