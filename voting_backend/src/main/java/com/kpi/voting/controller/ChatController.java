@@ -19,13 +19,22 @@ public class ChatController {
     private ChatService chatService;
 
     @GetMapping()
-    public @ResponseBody List<String> getMessages() {
-        return chatService.getAllMessages();
+    public @ResponseBody List<String> getMessagesByLikes() {
+        if(chatService.getNumberOfRows()!=0)
+        return chatService.sortByLikes();
+        else return null;
     }
 
+    /*@GetMapping()
+    public @ResponseBody List<String> getMessagesByDate() {
+        if(chatService.getNumberOfRows()!=0)
+        return chatService.sortByDate();
+        else return null;
+    }*/
     @PutMapping()
     public void sendMessage(@RequestBody String message) {
-        chatService.saveMessage(message);
+
+        chatService.createQuestion(message);
     }
 
 }

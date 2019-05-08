@@ -33,6 +33,9 @@ public class Question {
     @Formula("(select count(*) from vote where vote.answer = false)")
     private int voteNoCount;
 
+    @Column()
+    private Date autoTime;
+
 
     public int getVoteYesCount() {
         return voteYesCount;
