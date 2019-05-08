@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("api/autoquestion")
+@RequestMapping("autoquestion")
 public class AutoQuestionController {
     @Autowired
     private AutoQuestionService autoquestionService;

@@ -40,7 +40,7 @@ export class AutoQuestionService{
 
     const options = { params: new HttpParams().set('date', myDate) };
 
-    this.http.get< AutoQuestion>('api/autoquestion/auto', options)
+    this.http.get< AutoQuestion>('autoquestion/auto', options)
       .subscribe(question => this.question.next(question));
   }
 
