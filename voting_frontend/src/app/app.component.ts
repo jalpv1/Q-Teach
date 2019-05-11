@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userService.initUser();
     this.intervalSubscription = interval(1000).subscribe(() => this.questionService.getLastQuestion());
-    //this.intervalSubscription = interval(1000).subscribe(() => this.autoQuestionService.getLastAutoQuestion());
+   // this.intervalSubscription = interval(1000).subscribe(() => this.autoQuestionService.getLastAutoQuestion();
   }
 
   sendMessage(message: string): void {

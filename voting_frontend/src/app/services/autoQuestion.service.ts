@@ -10,16 +10,6 @@ import {Answer} from '../answer/answer.model';
 import { Pipe, PipeTransform} from '@angular/core';
 import {DatePipe, formatDate} from '@angular/common';
 
-@Pipe({
-  name: 'dateFormat'
-})
-
-export class DateFormatPipe extends DatePipe implements PipeTransform {
-  transform(value: any, args?: any): any {
-    ///MMM/dd/yyyy
-    return super.transform(value, "MMM/dd/yyyy");
-  }
-}
 
 @Injectable({providedIn: 'root'})
 export class AutoQuestionService{
@@ -46,7 +36,7 @@ export class AutoQuestionService{
 
   public answerQuestion(autoquestion:  AutoQuestion, answer: Answer<any>): Observable<any> {
     const body = AnswerResponse.create(autoquestion, answer, this.userService.getUserId());
-    return this.http.post('vote', body);
+    return this.http.post('autovote', body);
   }
 
 }
