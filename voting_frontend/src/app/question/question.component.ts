@@ -5,6 +5,7 @@ import {Answer} from '../answer/answer.model';
 import {ToasterService} from 'angular2-toaster';
 import {Unsubscribable} from 'rxjs';
 import {filter} from 'rxjs/operators';
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 const answersCached: Answer<boolean>[] =
   [new Answer('Yes', true, {'background-color': '#4CAF50'}),
@@ -23,7 +24,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
   private questionSubscription: Unsubscribable;
 
   constructor(private questionService: QuestionService,
-              private toaster: ToasterService) {
+              private toaster: ToasterService,
+              private httpClient: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -60,4 +62,9 @@ export class QuestionComponent implements OnInit, OnDestroy {
     }
   }
 
+  like(answer: Answer<any>): void {
+  //  const params = new HttpParams().append('chatQuestionId', 11111);
+  //  this.httpClient.put('chat/like', null, {params})
+   //   .subscribe(() => console.log('Good'));
+  }
 }
