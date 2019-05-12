@@ -1,0 +1,46 @@
+.one_m, .now_m{
+  width: 600px;
+  background-color: white;
+  padding-left: 2%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  h2{
+    font-weight: bold;
+  }
+}
+
+.now_m{
+  margin-top: 100px;
+  font-weight: bold;
+  justify-content: center;
+  span{
+    min-height: 20px;
+  }
+}
+
+.one_m_btn_like{
+  border: none;
+  background-color: transparent;
+  outline: none;
+  :hover{
+    cursor: pointer;
+  }
+}
+
+.ask{
+  display: flex;
+  justify-content: center;
+  button{
+    margin-left: 10px;
+
+  }
+  input:hover{
+    cursor: text;
+  }
+}
+
+.one_m, .now_m, .ask input, .ask button {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+  border-radius: 2px;
+}
