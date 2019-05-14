@@ -25,7 +25,9 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
   constructor(private questionService: QuestionService,
               private toaster: ToasterService,
+
               private httpClient: HttpClient){
+
   }
 
   ngOnInit(): void {
@@ -63,4 +65,11 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
 
+
+
+  like(answer: Answer<any>): void {
+  //  const params = new HttpParams().append('chatQuestionId', 11111);
+  //  this.httpClient.put('chat/like', null, {params})
+   //   .subscribe(() => console.log('Good'));
+  }
 }

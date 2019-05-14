@@ -19,9 +19,10 @@ public class ChatController {
     private ChatService chatService;
 
     @GetMapping()
-    public @ResponseBody List<String> getMessagesByLikes() {
-        if(chatService.getNumberOfRows()!=0)
-        return chatService.sortByLikes();
+    public @ResponseBody
+    List<String> getMessagesByLikes() {
+        if (chatService.getNumberOfRows() != 0)
+            return chatService.sortByLikes();
         else return null;
     }
 
@@ -35,6 +36,12 @@ public class ChatController {
     public void sendMessage(@RequestBody String message) {
 
         chatService.createQuestion(message);
+    }
+
+    @PutMapping("like")
+    public void like(@RequestParam Long chatQuestionId) {
+        System.out.println("!!!!!!");
+//        chatService.addLike(chatQuestionId);
     }
 
 }

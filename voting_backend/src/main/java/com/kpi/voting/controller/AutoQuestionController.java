@@ -23,8 +23,8 @@ public class AutoQuestionController {
 
     @PostMapping()
     public @ResponseBody
-    String createAutoQuestion(@RequestBody String question) {
-        final Long id = autoquestionService.createQuestion(question);
+    String createAutoQuestion(@RequestBody String question,Date d) {
+        final Long id = autoquestionService.createQuestion(question,d);
         if (Objects.isNull(id)) {
             return "Something went wrong. Can't create question " + question;
         } else {

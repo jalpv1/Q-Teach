@@ -45,10 +45,11 @@ public class AutoQuestionService {
         return question.orElse(null);
     }
 
-    public Long createQuestion(String title) {
+    public Long createQuestion(String title,Date date) {
         //questionRepository.deleteAll();
         AutoQuestion question = new AutoQuestion();
         question.setTitle(title);
+        question.setCreatedAt(date);
         question = questionRepository.save(question);
         questionRepository.flush();
         return question.getId();

@@ -44,8 +44,8 @@ export class autoQuestionComponent implements OnInit, OnDestroy {
           return false;
         }
       }))
-      .subscribe(question => {
-        this.autoQuestion = question;
+      .subscribe(autoQuestion => {
+        this.autoQuestion = autoQuestion;
         this.buttonDisabled = false;
       });
     //let timer = Observable.timer(2000,1000);

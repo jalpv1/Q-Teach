@@ -26,7 +26,7 @@ import java.util.Optional;
  * Created on 08.04.2019.
  */
 @Repository
-public interface ChatRepository  extends JpaRepository<ChatQuestion, Long>{
+public interface ChatRepository extends JpaRepository<ChatQuestion, Long> {
 
     //@Autowired
     //private ChatStore chatStore;
@@ -34,7 +34,7 @@ public interface ChatRepository  extends JpaRepository<ChatQuestion, Long>{
     //private EntityManager entityManager;
 
     //public List<String> findAllMessages() {
-     //   return chatStore.getMessages();
+    //   return chatStore.getMessages();
     //}
     List<ChatQuestion> findAll();
 
@@ -45,19 +45,20 @@ public interface ChatRepository  extends JpaRepository<ChatQuestion, Long>{
 
     // add 1 like to the db ChatQuestion
     @Modifying(clearAutomatically = true)
-    @Query(value="UPDATE ChatQuestion cq SET cq.counterLikes = ? WHERE cq.id=?",nativeQuery = true)
-    int updateLikes( Long counter, Long likeId);
+    @Query(value = "UPDATE ChatQuestion cq SET cq.counterLikes = ? WHERE cq.id=?", nativeQuery = true)
+    int updateLikes(Long counter, Long likeId);
 
     @Query("SELECT cq.question FROM ChatQuestion cq  ORDER BY cq.counterlikes ")
     List<String> findAllByLikes();
 
 
     @Query("SELECT cq.question FROM ChatQuestion cq  ORDER BY cq.createdAt")
-   List<String> findAllByDate();
+    List<String> findAllByDate();
 
-    @Query (value="insert into chatQuestion (createdAt,question,counterLikes) values (:createDate,:questionTitle,:counter)", nativeQuery=true)
+    @Query(value = "insert into chatQuestion (createdAt,question,counterLikes) values (:createDate,:questionTitle,:counter)", nativeQuery = true)
     void saveChatQuestion(@Param("createDate") Date dateCreate, @Param("questionTitle") String title, @Param("counter") Long counter);
-    @Query ("SELECT  count(q) FROM ChatQuestion  q")
+
+    @Query("SELECT  count(q) FROM ChatQuestion  q")
     int getNumOfRows();
 }
 

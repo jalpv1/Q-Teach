@@ -34,35 +34,38 @@ public class ChatService {
         chatRepository.flush();
         return chat_question.getId();
     }
+
     // save question from the student
     public void saveMessage(final String message) {
-        chatRepository.saveChatQuestion(new Date(), message,new Long(0));
+        chatRepository.saveChatQuestion(new Date(), message, new Long(0));
     }
 
     // get  current like's counter
-    public Long getLike(Long likeId){
+    public Long getLike(Long chatQuestionId) {
         Query query = entityManager.createNativeQuery("Select counterLikes from chat_question where chat_question.id=?")
-                .setParameter(1,likeId);
-        return  (Long)(query.getSingleResult());
+                .setParameter(1, chatQuestionId);
+        return (Long) (query.getSingleResult());
     }
 
     //add 1 like to the question with likeid
-    public void addLike(Long likeId){
-        Long counter=this.getLike(likeId);
+    public void addLike(Long chatQuestionId) {
+        Long counter = this.getLike(chatQuestionId);
         counter++;
-        chatRepository.updateLikes(counter,likeId);
+        chatRepository.updateLikes(counter, chatQuestionId);
     }
 
-    public List<String> sortByLikes(){
+    public List<String> sortByLikes() {
         return chatRepository.findAllByLikes();
     }
 
-    public List<String> sortByDate(){
-       return chatRepository.findAllByDate();
+    public List<String> sortByDate() {
+        return chatRepository.findAllByDate();
     }
 
-    public int getNumberOfRows(){ return chatRepository.getNumOfRows();}
-   // public List<String> getAllMessages() {
+    public int getNumberOfRows() {
+        return chatRepository.getNumOfRows();
+    }
+    // public List<String> getAllMessages() {
     //    return chatRepository.findAllMessages();
     //}
 
