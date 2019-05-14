@@ -10,13 +10,13 @@
 <div style="text-align:center">
   <input #message>
   <button (click)="sendMessage(message.value)">Send Message</button>
-  <button  (click)=print()>INFO</button>
+  <button (click)=print()>INFO</button>
   <app-question></app-question>
   <app-autoquestion></app-autoquestion>
   <toaster-container></toaster-container>
 </div>
 
-<div id="inform" >
+<div id="inform">
   <h2>Підготовка до практики!</h2>
   1) Встановити JDK<br>
   2) Встановити Jidea Ultimate!!! (<a href="https://www.jetbrains.com/idea/download/#section=windows)">https://www.jetbrains.com/idea/download/#section=windows)<br></a>
@@ -36,7 +36,7 @@
   1) Ознайомитися з Spring, Spring Shell, DI.<br>
   Створити трьох рівневу архітектуру: Simple Data Source (in memory) <- Domain (Бізнес логіка) <- Presentation.<br>
   Продумати які нові можливості ви б хотіли реалізувати та реалізувати їх.<br>
-  2) Заміняємо Prsentation Layer розробляємо  REST API (Spring Shell -> Spring MVC).<br>
+  2) Заміняємо Prsentation Layer розробляємо REST API (Spring Shell -> Spring MVC).<br>
   Отримуємо проект (voter який бачили на лекції).<br>
   3) Заміняємо Data Source Layer підключаємо Spring Data (ORM). Добавляємо базу даних.<br>
   4) Створюємо WEB Client для REST API (Angular 2+).<br>
@@ -72,5 +72,17 @@
   <a href="https://www.youtube.com/watch?v=_aJABfbm-UA">https://www.youtube.com/watch?v=_aJABfbm-UA</a><br>
   <a href="https://www.youtube.com/watch?v=t3KH5LXHi0s&list=PLqHlAwsJRxANlSuRSgldPWsbNkPqVBeFp">https://www.youtube.com/watch?v=t3KH5LXHi0s&list=PLqHlAwsJRxANlSuRSgldPWsbNkPqVBeFp</a><br>
   <a href="https://www.youtube.com/watch?v=cKod7WX0qUc&list=PLqHlAwsJRxANhhHlAlazVrbX69UMJ9Bcu">https://www.youtube.com/watch?v=cKod7WX0qUc&list=PLqHlAwsJRxANhhHlAlazVrbX69UMJ9Bcu</a><br>
-<button id="back" (click)=back()>BACK</button>
+  <button id="back" (click)=back()>BACK</button>
+</div>
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/bar-chart">Question Statistics</a>
+    </li>
+
+  </ul>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>
