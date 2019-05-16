@@ -1,6 +1,7 @@
 package com.kpi.voting.controller;
 
-import com.kpi.voting.domain.VoteService;
+
+import com.kpi.voting.domain.AutoVoteService;
 import com.kpi.voting.dto.RequestVoteDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,18 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-/**
- * @author Roman.Harmash
- * @version 1.0
- * Created on 01.04.2019.
- */
+
 @RestController
 
-@RequestMapping("vote")
-public class VoteController {
+@RequestMapping("autovote")
+public class VoteAutoQuestionController {
 
     @Autowired
-    private VoteService voteService;
+    private AutoVoteService voteService;
 
 
     @PostMapping(produces = "application/json")
@@ -31,6 +28,11 @@ public class VoteController {
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping
+    public Long getYes(@RequestParam Long autoQuestionId) {
+        return voteService.getYes(autoQuestionId);
     }
 
 }
