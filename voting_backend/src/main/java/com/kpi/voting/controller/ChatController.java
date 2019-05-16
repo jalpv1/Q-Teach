@@ -18,11 +18,13 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
-    @GetMapping()
-    public @ResponseBody
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value= "sortByLikes")
+    public @ResponseBody()
     List<String> getMessagesByLikes() {
-        if (chatService.getNumberOfRows() != 0)
-            return chatService.sortByLikes();
+        if (chatService.getNumberOfRows() != 0){
+            System.out.println(chatService.sortByLikes());
+            return chatService.sortByLikes();}
         else return null;
     }
 

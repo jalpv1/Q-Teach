@@ -36,6 +36,9 @@ export class QuestionService {
   }
 
   public getListOfTitles(){
-    return this.http.get<Label[]>('/question/title');
+    return this.http.get<string[]>('/question/title');
+  }
+  public getSortChatQuest(){
+    return this.http.get<string[]>('/chat/sortByLikes');
   }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuestionService} from '../services/question.service';
 import {Label} from 'ng2-charts';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-my-bar-chart',
@@ -17,12 +18,15 @@ export class MyBarChartComponent implements OnInit {
 
   public barChartType = 'bar';
   public barChartLegend = true;
-  listVoteYes: number[];
-  listVoteNo: number[];
-  listOfTitles: Label[];
+  listVoteYes: number[] = [];
+  listVoteNo: number[] = [];
+  listOfTitles: string[];
 
-  public barChartLabels: {data: Label[]} = {data: this.listOfTitles};
-  constructor(private questionService: QuestionService) { }
+  public barChartLabels = ['2006', '2007', '2008'];
+
+  // public barChartLabels: {data: Label[]} = {data: this.listOfTitles};
+  constructor(private questionService: QuestionService) {
+  }
 
   public barChartData = [];
 
@@ -33,23 +37,19 @@ export class MyBarChartComponent implements OnInit {
   }
 
   getListOfVoteYesCount() {
-    this.questionService.getListOfvoteYesCount()
-      .subscribe(list => { this.listVoteYes = list; this.barChartData = [{data: this.listVoteYes, label: 'Yes'},{data: this.listVoteNo, label: 'No'}];});
+    this.questionService.getListOfvoteYesCount().subscribe(list => this.listVoteYes = list);
   }
 
   getListOfVoteNoCount() {
-    this.questionService.getListOfvoteNoCount()
-      .subscribe(list => { this.listVoteNo = list; this.barChartData = [{data: this.listVoteYes, label: 'Yes'},{data: this.listVoteNo, label: 'No'}];});
+    this.questionService.getListOfvoteNoCount().subscribe(list => this.listVoteNo = list);
   }
 
   getListOfTitles(){
-    this.questionService. getListOfTitles()
-      .subscribe(list => { this.listOfTitles = list; this.barChartLabels = {data: this.listOfTitles}; })
+    this.questionService.getListOfTitles()
+      .subscribe(list => this.listOfTitles = list);
   }
 
   ngOnInit() {
-    this.listVoteYes = [];
-    this.listVoteNo = [];
     this.listOfTitles=[];
     this.getListOfVoteYesCount();
     this.getListOfVoteNoCount();

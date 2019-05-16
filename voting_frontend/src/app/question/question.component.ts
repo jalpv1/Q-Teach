@@ -64,9 +64,14 @@ export class QuestionComponent implements OnInit, OnDestroy {
     }
   }
 
+////////////for Nastya Sorting by likes///////////your ass)))
+  SortByLikes(answer: Answer<any>): void {
+    //const params = new HttpParams().append('chatQuestion', "fgd1");
+    this.httpClient.get<string[]>('http://localhost:8082/chat/sortByLikes')
+      .subscribe(str=>console.log(str[3]));
+    // this.questionService.SortChatQuest();
 
-
-
+  }
   like(answer: Answer<any>): void {
   //  const params = new HttpParams().append('chatQuestionId', 11111);
   //  this.httpClient.put('chat/like', null, {params})

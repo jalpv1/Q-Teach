@@ -15,6 +15,7 @@ import { MyBarChartComponent } from './my-bar-chart/my-bar-chart.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     QuestionComponent,
