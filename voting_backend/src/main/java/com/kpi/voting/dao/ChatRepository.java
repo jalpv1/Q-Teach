@@ -1,6 +1,7 @@
 package com.kpi.voting.dao;
 
 import com.kpi.voting.dao.entity.ChatQuestion;
+import com.kpi.voting.dao.entity.Question;
 import com.kpi.voting.dao.memoryStore.ChatStore;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,8 @@ public interface ChatRepository extends JpaRepository<ChatQuestion, Long> {
     //public List<String> findAllMessages() {
     //   return chatStore.getMessages();
     //}
+    ///Optional<Question> findTopByOrderByIdDesc();
+
     List<ChatQuestion> findAll();
 
     Optional<ChatQuestion> findTopByOrderByIdDesc();
@@ -45,8 +48,13 @@ public interface ChatRepository extends JpaRepository<ChatQuestion, Long> {
 
     // add 1 like to the db ChatQuestion
     @Modifying(clearAutomatically = true)
-    @Query(value = "UPDATE ChatQuestion cq SET cq.counterLikes = ? WHERE cq.id=?", nativeQuery = true)
-    int updateLikes(Long counter, Long likeId);
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+    //@Query(value = "UPDATE ChatQuestion cq SET cq.counterLikes = ? WHERE cq.id=?", nativeQuery = true)
+    @Query("UPDATE ChatQuestion cq SET cq.counterlikes = :counter  WHERE cq.id = :id ")
+    void updateLikes(Long counter, Long id);
+
+    //@Query("UPDATE ChatQuestion cq SET cq.counterlikes = counterlikes +1 WHERE cq.id = :id ")
+    //int countByCounterlikes(Long id);
 
     @Query("SELECT cq.question FROM ChatQuestion cq  ORDER BY cq.counterlikes ")
     List<String> findAllByLikes();
@@ -55,8 +63,10 @@ public interface ChatRepository extends JpaRepository<ChatQuestion, Long> {
     @Query("SELECT cq.question FROM ChatQuestion cq  ORDER BY cq.createdAt")
     List<String> findAllByDate();
 
+
     @Query(value = "insert into chatQuestion (createdAt,question,counterLikes) values (:createDate,:questionTitle,:counter)", nativeQuery = true)
-    void saveChatQuestion(@Param("createDate") Date dateCreate, @Param("questionTitle") String title, @Param("counter") Long counter);
+ // @Query("insert into chatQuestion cq (cq.createdAt,cq.question,cq.counterLikes) values (:createDate,:questionTitle,:counter)")
+  void saveChatQuestion(@Param("createDate") Date dateCreate, @Param("questionTitle") String title, @Param("counter") Long counter);
 
     @Query("SELECT  count(q) FROM ChatQuestion  q")
     int getNumOfRows();

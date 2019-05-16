@@ -18,7 +18,7 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
-    @GetMapping()
+    @GetMapping("sorted")
     public @ResponseBody
     List<String> getMessagesByLikes() {
         if (chatService.getNumberOfRows() != 0)
@@ -40,8 +40,18 @@ public class ChatController {
 
     @PutMapping("like")
     public void like(@RequestParam Long chatQuestionId) {
-        System.out.println("!!!!!!");
-//        chatService.addLike(chatQuestionId);
+        // System.out.println("!!!!!!");
+        try {
+            chatService.addLike(chatQuestionId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @GetMapping("chatlast")
+    public Long getLast( ){
+       Long id;
+       id =  chatService.getLastQuestion();
+      return  id;
     }
 
 }

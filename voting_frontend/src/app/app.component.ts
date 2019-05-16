@@ -1,12 +1,16 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from './services/user.service';
-import {interval, Unsubscribable} from 'rxjs';
+import {interval, Observable, Unsubscribable} from 'rxjs';
 import {QuestionService} from './services/question.service';
 import {AutoQuestionService} from './services/autoQuestion.service';
 
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {ToasterService} from 'angular2-toaster';
 import {AutoQuestion} from "./autoQuestion/autoQuestion.model";
+import {Answer} from "./answer/answer.model";
+import {__values} from "tslib";
+//import {ChatService} from  './services/question.service';
+
 
 @Component({
   selector: 'app-root',
@@ -23,6 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private userService: UserService,
               private questionService: QuestionService,
+             // private chatService: ChatService,
               private autoQuestionService: AutoQuestionService,
               private httpClient: HttpClient,
               private toaster: ToasterService) {
@@ -52,6 +57,19 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.intervalSubscription) {
       this.intervalSubscription.unsubscribe();
     }
+  }
+  lastChatQuestionId(): Observable<number> {
+    //chatlast
+    /*this.httpClient.get< Number>('chat/chatlast').
+      subscribe(data => return data);*/
+    return this.httpClient.get<number>('chat/chatlast');
+  }
+  like(answer: Answer<any>): void {
+    this.lastChatQuestionId().subscribe(data => {
+      const params = new HttpParams().append('chatQuestionId', data.toString());
+      this.httpClient.put('chat/like', null, {params})
+        .subscribe(() => console.log('Good'));
+    });
   }
 
 }

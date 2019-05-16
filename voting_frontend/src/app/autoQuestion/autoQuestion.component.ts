@@ -54,7 +54,7 @@ export class autoQuestionComponent implements OnInit, OnDestroy {
 
   public askQuestion():void {
     this.autoQuestionService.getLastAutoQuestion(new Date());
-  }
+}
 
   public selectedAnswer(answer: Answer<any>): void {
     this.autoQuestionService.answerQuestion(this.autoQuestion, answer)
