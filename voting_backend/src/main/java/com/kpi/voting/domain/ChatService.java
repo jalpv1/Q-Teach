@@ -41,6 +41,7 @@ public class ChatService {
         Optional<ChatQuestion> chat_question = chatRepository.findTopByOrderByIdDesc();
        return chat_question.orElse(null).getId();
     }
+
     // save question from the student
     public void saveMessage(final String message) {
         chatRepository.saveChatQuestion(new Date(), message, new Long(0));
@@ -52,6 +53,7 @@ public class ChatService {
                 .setParameter(1, chatQuestionId);
         java.math.BigInteger r = (java.math.BigInteger)query.getSingleResult();
         return r.longValue();
+
     }
 
     //add 1 like to the question with likeid

@@ -12,6 +12,7 @@ import {__values} from "tslib";
 //import {ChatService} from  './services/question.service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,9 +26,10 @@ export class AppComponent implements OnInit, OnDestroy {
   private intervalSubscription: Unsubscribable;
 
 
+
   constructor(private userService: UserService,
               private questionService: QuestionService,
-             // private chatService: ChatService,
+
               private autoQuestionService: AutoQuestionService,
               private httpClient: HttpClient,
               private toaster: ToasterService) {

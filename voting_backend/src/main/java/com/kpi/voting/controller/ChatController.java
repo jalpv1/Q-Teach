@@ -18,11 +18,15 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
-    @GetMapping("sorted")
-    public @ResponseBody
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value= "sortByLikes")
+    public @ResponseBody()
     List<String> getMessagesByLikes() {
-        if (chatService.getNumberOfRows() != 0)
-            return chatService.sortByLikes();
+        if (chatService.getNumberOfRows() != 0){
+            System.out.println(chatService.sortByLikes());
+            return chatService.sortByLikes();}
+
         else return null;
     }
 
@@ -40,7 +44,7 @@ public class ChatController {
 
     @PutMapping("like")
     public void like(@RequestParam Long chatQuestionId) {
-        // System.out.println("!!!!!!");
+
         try {
             chatService.addLike(chatQuestionId);
         } catch (Exception e) {
@@ -52,6 +56,7 @@ public class ChatController {
        Long id;
        id =  chatService.getLastQuestion();
       return  id;
+
     }
 
 }

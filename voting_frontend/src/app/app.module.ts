@@ -10,21 +10,27 @@ import { AnswerComponent } from './answer/answer.component';
 import {ToasterModule, ToasterService} from 'angular2-toaster';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //import {ButtonInfoComponent} from './buttonInfo/button.component';
-
+import { ChartsModule } from 'ng2-charts';
+import { MyBarChartComponent } from './my-bar-chart/my-bar-chart.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     QuestionComponent,
     autoQuestionComponent,
     DateFormatPipe,
-    AnswerComponent
+    AnswerComponent,
+    MyBarChartComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToasterModule.forRoot(),
+    AppRoutingModule,
+    ChartsModule
   ],
   providers: [ToasterService,DateFormatPipe],
   bootstrap: [AppComponent]

@@ -5,6 +5,9 @@ import com.kpi.voting.domain.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -30,5 +33,20 @@ public class QuestionController {
             return "Created question [" + question + "] with id = " + id;
         }
     }
-
+    ////////////////////
+    @GetMapping(value="NumberVoteYes")
+    public @ResponseBody
+    ArrayList<Integer> getVoteYesCount(){
+       return questionService.findNumberVoteYes();
+    }
+    @GetMapping(value="NumberVoteNo")
+    public @ResponseBody
+    ArrayList<Integer> getVoteNoCount(){
+        return questionService.findNumberVoteNo();
+    }
+    @GetMapping(value="title")
+    public @ResponseBody
+    ArrayList<String> getTitles(){
+        return questionService.findAllTitles();
+    }
 }

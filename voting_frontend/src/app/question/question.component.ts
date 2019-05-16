@@ -25,7 +25,9 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
   constructor(private questionService: QuestionService,
               private toaster: ToasterService,
+
               private httpClient: HttpClient) {
+
   }
 
   ngOnInit(): void {
@@ -60,6 +62,16 @@ export class QuestionComponent implements OnInit, OnDestroy {
     if (this.questionSubscription) {
       this.questionSubscription.unsubscribe();
     }
+  }
+
+
+////////////for Nastya Sorting by likes///////////your ass)))
+  SortByLikes(answer: Answer<any>): void {
+    //const params = new HttpParams().append('chatQuestion', "fgd1");
+    this.httpClient.get<string[]>('http://localhost:8082/chat/sortByLikes')
+      .subscribe(str=>console.log(str[3]));
+    // this.questionService.SortChatQuest();
+
   }
 
   like(answer: Answer<any>): void {

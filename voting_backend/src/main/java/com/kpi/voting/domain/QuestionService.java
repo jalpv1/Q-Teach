@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Array;
 import java.util.*;
 import java.text.*;
 import javax.persistence.EntityManager;
@@ -51,5 +52,29 @@ public class QuestionService {
         System.out.println("Updated statistics:");
         System.out.println(updatedQuestion);
         System.out.println("=========================");
+    }
+
+    public ArrayList<Integer> findNumberVoteYes(){
+        ArrayList<Integer> listvoteYes=new ArrayList();
+        List<Question>question=questionRepository.findAll();
+        for (Question i:question ){
+            listvoteYes.add(i.getVoteYesCount());
+        }
+        return listvoteYes;
+    }
+    public ArrayList<Integer> findNumberVoteNo(){
+        ArrayList<Integer> listvoteYes=new ArrayList();
+        List<Question>question=questionRepository.findAll();
+        for (Question i:question )
+            listvoteYes.add(i.getVoteNoCount());
+        return listvoteYes;
+    }
+
+    public  ArrayList<String>findAllTitles(){
+        ArrayList<String> listOfTitles=new ArrayList<>();
+        List<Question>question=questionRepository.findAll();
+        for (Question i:question )
+            listOfTitles.add(i.getTitle());
+        return listOfTitles;
     }
 }

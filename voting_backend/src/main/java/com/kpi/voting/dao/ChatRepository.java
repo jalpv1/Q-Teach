@@ -48,6 +48,7 @@ public interface ChatRepository extends JpaRepository<ChatQuestion, Long> {
 
     // add 1 like to the db ChatQuestion
     @Modifying(clearAutomatically = true)
+
     @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
     //@Query(value = "UPDATE ChatQuestion cq SET cq.counterLikes = ? WHERE cq.id=?", nativeQuery = true)
     @Query("UPDATE ChatQuestion cq SET cq.counterlikes = :counter  WHERE cq.id = :id ")
@@ -55,6 +56,7 @@ public interface ChatRepository extends JpaRepository<ChatQuestion, Long> {
 
     //@Query("UPDATE ChatQuestion cq SET cq.counterlikes = counterlikes +1 WHERE cq.id = :id ")
     //int countByCounterlikes(Long id);
+
 
     @Query("SELECT cq.question FROM ChatQuestion cq  ORDER BY cq.counterlikes ")
     List<String> findAllByLikes();
@@ -67,6 +69,7 @@ public interface ChatRepository extends JpaRepository<ChatQuestion, Long> {
     @Query(value = "insert into chatQuestion (createdAt,question,counterLikes) values (:createDate,:questionTitle,:counter)", nativeQuery = true)
  // @Query("insert into chatQuestion cq (cq.createdAt,cq.question,cq.counterLikes) values (:createDate,:questionTitle,:counter)")
   void saveChatQuestion(@Param("createDate") Date dateCreate, @Param("questionTitle") String title, @Param("counter") Long counter);
+
 
     @Query("SELECT  count(q) FROM ChatQuestion  q")
     int getNumOfRows();
