@@ -1,0 +1,25 @@
+body {
+  background-color: seashell;
+  top: 0;
+  left: 0;
+  //position: fixed;
+}
+
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+//declaring styles for item
+.mat-card {
+  background: rgba(126, 192, 238, 0.4);
+  color: #778899;
+  margin: 10px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  //justify-self: center;
+  //justify-content: space-between;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline , .mat-form-field-label{
+  color: #c2185b;
+}

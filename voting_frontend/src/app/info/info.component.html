@@ -1,0 +1,117 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<mat-list>
+    <h3>Щоб підготуватися до практики вам потрібно</h3>
+    <mat-list-item>
+        <mat-checkbox color="primary">Встановити JDK</mat-checkbox>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-checkbox color="primary">
+            <a href="https://www.jetbrains.com/idea/download/#section=windows)">Встановити IntelliJ IDEA Ultimate!!!</a>
+        </mat-checkbox>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-checkbox color="primary">Створити Spring Boot проект</mat-checkbox>
+    </mat-list-item>
+    <mat-list-item>
+        Ми будемо працювати у командах, розбирати архітектуру та вивчати нові потрібні інструменти.
+    </mat-list-item>
+</mat-list>
+
+<mat-list>
+    <h3>Завдання</h3>
+    <mat-list-item>
+        Розширити проект який бачили на 1 лекції. <br>
+        Кожна команда має добавити нові можливості (Історія голосування, проходження тестів, ...). Функціонал в команд можуть повторюватися!
+    </mat-list-item>
+</mat-list>
+
+<mat-list>
+    <h3>Лекція 1</h3>
+    <mat-list-item>
+        <mat-checkbox color="primary">Ознайомитися з Spring, Spring Shell, DI</mat-checkbox>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-checkbox color="primary">
+            Створити трьох рівневу архітектуру: Simple Data Source (in memory) <- Domain (Бізнес логіка) <- Presentation
+        </mat-checkbox>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-checkbox color="primary">Продумати які нові можливості ви б хотіли реалізувати та реалізувати їх.</mat-checkbox>
+    </mat-list-item>
+</mat-list>
+
+<mat-list>
+    <h3>Лекція 2</h3>
+    <mat-list-item>
+        <mat-checkbox color="primary">
+            Заміняємо Presentation Layer розробляємо REST API (Spring Shell -> Spring MVC)
+        </mat-checkbox>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-checkbox color="primary">
+            Отримуємо проект (voter який бачили на лекції)
+        </mat-checkbox>
+    </mat-list-item>
+</mat-list>
+
+
+<mat-list>
+    <h3>Лекція 3</h3>
+    <mat-list-item>
+        <mat-checkbox color="primary">
+            Заміняємо Data Source Layer: підключаємо Spring Data (ORM)
+        </mat-checkbox>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-checkbox color="primary">
+            Додаємо базу даних
+        </mat-checkbox>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-checkbox color="primary">
+            Ознайомлюємось з <a href="https://habr.com/ru/post/117974/">Jooq</a>
+        </mat-checkbox>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-checkbox color="primary">
+            Ознайомлюємось з <a href="https://habr.com/ru/post/247885/">MyBatis</a>
+        </mat-checkbox>
+    </mat-list-item>
+</mat-list>
+
+<mat-list>
+    <h3>Лекція 4</h3>
+    <mat-list-item>
+        <mat-checkbox color="primary">
+            Створюємо WEB Client для REST API (Angular 2+)
+        </mat-checkbox>
+    </mat-list-item>
+</mat-list>
+
+
+<!--<mat-list>-->
+<!--    <h3>Відео матеріали</h3>-->
+<!--    <div>-->
+<!--        <div *ngFor="let lecUrl of videos">-->
+<!--            <app-video [src]="lecUrl"></app-video>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</mat-list>-->
+
+
+<div>
+    <h2>Відео матеріали</h2>
+    <mat-grid-list cols="3" rowHeight="130px">
+        <mat-grid-tile *ngFor="let lecUrl of videos" [rowspan]="3">
+            <app-video [src]="lecUrl"></app-video>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+
+

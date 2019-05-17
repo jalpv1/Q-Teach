@@ -18,14 +18,45 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
-    @GetMapping()
-    public @ResponseBody List<String> getMessages() {
-        return chatService.getAllMessages();
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value= "sortByLikes")
+    public @ResponseBody()
+    List<String> getMessagesByLikes() {
+        if (chatService.getNumberOfRows() != 0){
+            System.out.println(chatService.sortByLikes());
+            return chatService.sortByLikes();}
+
+        else return null;
     }
 
+    /*@GetMapping()
+    public @ResponseBody List<String> getMessagesByDate() {
+        if(chatService.getNumberOfRows()!=0)
+        return chatService.sortByDate();
+        else return null;
+    }*/
     @PutMapping()
     public void sendMessage(@RequestBody String message) {
-        chatService.saveMessage(message);
+
+        chatService.createQuestion(message);
+    }
+
+    @PutMapping("like")
+    public void like(@RequestParam Long chatQuestionId) {
+
+        try {
+            chatService.addLike(chatQuestionId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @GetMapping("chatlast")
+    public Long getLast( ){
+       Long id;
+       id =  chatService.getLastQuestion();
+      return  id;
+
     }
 
 }

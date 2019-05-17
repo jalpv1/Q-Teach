@@ -1,0 +1,81 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="ask">
+    <mat-form-field appearance="outline" >
+        <mat-label>Just ask!</mat-label>
+        <input matInput #message>
+    </mat-form-field>
+    <button color="primary" mat-raised-button (click)="sendMessage(message.value)">Send</button>
+</div>
+
+
+
+<div class="messages" >
+    <div *ngFor="let m of messages">
+        <mat-card>
+            <mat-card-content>
+                <button color="primary" mat-icon-button (click)="like(answer)" ><mat-icon>favorite</mat-icon></button>
+                <span>{{m}}</span>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+
+<!--<div class="messages">-->
+<!--    <mat-card>-->
+<!--        <mat-card-content>-->
+<!--            <button color="primary" mat-icon-button><mat-icon>favorite</mat-icon></button>-->
+<!--            <span>11111</span>-->
+<!--        </mat-card-content>-->
+<!--    </mat-card>-->
+<!--    <mat-card>-->
+<!--        <mat-card-content>-->
+<!--            <button color="primary" mat-icon-button><mat-icon>favorite</mat-icon></button>-->
+<!--            <span>11111</span>-->
+<!--        </mat-card-content>-->
+<!--    </mat-card>-->
+<!--    <mat-card>-->
+<!--        <mat-card-content>-->
+<!--            <button color="primary" mat-icon-button><mat-icon>favorite</mat-icon></button>-->
+<!--            <span>11111</span>-->
+<!--        </mat-card-content>-->
+<!--    </mat-card>-->
+<!--</div>-->
+
+
+
+<!--<div>-->
+<!--    <app-auto-question></app-auto-question>-->
+<!--</div>-->
+
+<!--<div>-->
+<!--    <div class="one_m">-->
+<!--        <span>11111</span>-->
+<!--        <button class="one_m_btn_like">-->
+<!--            <i class="far fa-heart"></i>-->
+<!--            <span>10</span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--    <div class="one_m">-->
+<!--        <span>11111</span>-->
+<!--        <button class="one_m_btn_like">-->
+<!--            <i class="far fa-heart"></i>-->
+<!--            <span>5</span>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</div>-->
+
+
