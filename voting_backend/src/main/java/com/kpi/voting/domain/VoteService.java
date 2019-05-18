@@ -24,6 +24,7 @@ public class VoteService {
         if (voteExists) throw new OperationNotSupportedException("You have already voted.");
 
         Question question = questionService.getQuestion(vote.getQuestionId());
+
         if (Objects.isNull(question)) throw new OperationNotSupportedException("Question not found.");
 
         boolean isVoteCreated = createVote(vote, question);

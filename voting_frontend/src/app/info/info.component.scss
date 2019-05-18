@@ -1,0 +1,32 @@
+mat-list, mat-grid-list, div{
+  margin: 20px;
+  h3{
+    color: #778899;
+    margin-left: 10px;
+  }
+  h2{
+    color: #778899;
+    text-align: center;
+  }
+  background: rgba(126, 192, 238, 0.4);
+  :hover{
+    cursor: default;
+  }
+  mat-list-item{
+    color: #778899;
+    a{
+      color: #4f73ad;
+      text-decoration: none;
+    }
+  }
+}
+
+
+mat-checkbox{
+  margin: 10px;
+  color: #778899;
+}
+
+mat-grid-tile{
+  max-height: 1000px;
+}

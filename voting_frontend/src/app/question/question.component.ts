@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {QuestionService} from '../services/question.service';
 import {Question} from './question.model';
 import {Answer} from '../answer/answer.model';
-import {ToasterService} from 'angular2-toaster';
 import {Unsubscribable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
@@ -22,8 +21,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   public buttonDisabled = false;
   private questionSubscription: Unsubscribable;
 
-  constructor(private questionService: QuestionService,
-              private toaster: ToasterService) {
+  constructor(private questionService: QuestionService) {
   }
 
   ngOnInit(): void {
@@ -48,11 +46,11 @@ export class QuestionComponent implements OnInit, OnDestroy {
   public selectedAnswer(answer: Answer<any>): void {
     this.questionService.answerQuestion(this.question, answer)
       .subscribe(() => {
-          this.buttonDisabled = true;
-          this.toaster.pop('success', 'Thanks for answer.');
-        },
-        err => this.toaster.pop('error', err.error));
-  }
+          this.buttonDisabled = true
+         // this.toaster.pop('success', 'Thanks for answer.');
+        //},
+        //err => this.toaster.pop('error', err.error));
+  });}
 
   ngOnDestroy(): void {
     if (this.questionSubscription) {

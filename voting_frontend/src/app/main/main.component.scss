@@ -1,0 +1,31 @@
+.top-message{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.ask{
+  display: flex;
+  justify-content: center;
+  button{
+    width: 45px;
+    height: 35px;
+    margin: 5px;
+  }
+  .mat-form-field{
+    width: 40%;
+  }
+}
+
+
+.messages{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  button{
+    outline: 0;
+  }
+}
+
+
+

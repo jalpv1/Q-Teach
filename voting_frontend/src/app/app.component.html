@@ -1,12 +1,9 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}.
-  </h1>
-</div>
-<div style="text-align:center">
-  <input #message>
-  <button (click)="sendMessage(message.value)">Send Message</button>
-  <app-question></app-question>
-  <toaster-container></toaster-container>
-</div>
+<header>
+    <ul class="horizontal-list">
+        <li><a routerLink="/main">Welcome to QTeach!</a></li>
+        <li><a routerLink="/info">Info</a></li>
+        <li><a routerLink="/statistic">Statistics</a></li>
+        <li><a routerLink="/auto">Auto-question</a></li>
+    </ul>
+</header>
+<router-outlet></router-outlet>

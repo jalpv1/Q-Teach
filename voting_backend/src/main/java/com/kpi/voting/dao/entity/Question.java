@@ -26,16 +26,21 @@ public class Question {
     private Collection<Vote> votes;
 
     @Fetch(FetchMode.SUBSELECT)
-    @Formula("(select count(*) from vote where vote.answer = true)")
+    @Formula("(select count(*) from Vote v  where v.question_id=id AND v.answer = true)")
     private int voteYesCount;
 
     @Fetch(FetchMode.SUBSELECT)
-    @Formula("(select count(*) from vote where vote.answer = false)")
+    @Formula("(select count(*) from Vote v  where v.question_id=id AND v.answer = false)")
     private int voteNoCount;
+
+    @Column()
+    private Date autoTime;
 
 
     public int getVoteYesCount() {
+       // System.out.println(voteYesCount);
         return voteYesCount;
+
     }
 
     public void setVoteYesCount(int voteYesCount) {

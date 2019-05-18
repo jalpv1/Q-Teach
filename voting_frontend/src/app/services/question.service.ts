@@ -16,13 +16,24 @@ export class QuestionService {
   }
 
   public getLastQuestion(): void {
-    this.http.get<Question>('/question/last')
-      .subscribe(question => this.question.next(question));
+    //this.http.get<Question>('/question/last')
+     // .subscribe(question => this.question.next(question));
   }
 
   public answerQuestion(question: Question, answer: Answer<any>): Observable<any> {
     const body = AnswerResponse.create(question, answer, this.userService.getUserId());
     return this.http.post('vote', body);
+  }
+  public getListOfvoteYesCount() {
+    return this.http.get<number[]>('/question/NumberVoteYes');
+  }
+
+  public getListOfvoteNoCount() {
+    return this.http.get<number[]>('/question/NumberVoteNo');
+  }
+
+  public getListOfTitles(){
+    return this.http.get<string[]>('/question/title');
   }
 
 }

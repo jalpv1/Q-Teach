@@ -1,0 +1,29 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="aq">
+  <mat-card>
+    <p>{{autoQuestion?.title}}</p>
+          <div class="a" *ngFor="let answer of answers">
+            <app-answer class="item" [answer]="answer" [disabled]="buttonDisabled" (select)="selectedAnswer($event)"></app-answer>
+          </div>
+  </mat-card>
+  <button color ="primary" mat-raised-button (click)="askQuestion()" >Check</button>
+<!--  <mat-card>-->
+<!--    <mat-card-content>-->
+<!--      <mat-card-title>{{m}}</mat-card-title><br>-->
+<!--      <div class="a" *ngFor="let answer of answers">-->
+<!--        <app-answer class="item" [answer]="answer" [disabled]="buttonDisabled" (select)="selectedAnswer($event)">-->
+<!--        </app-answer>-->
+<!--      </div>-->
+<!--    </mat-card-content>-->
+<!--  </mat-card>-->
+</div>

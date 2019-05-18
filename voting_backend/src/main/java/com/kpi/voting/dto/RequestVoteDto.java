@@ -10,7 +10,6 @@ public class RequestVoteDto {
     @NotNull
     private boolean answer;
 
-    @NotNull
     private Long userId;
 
     @NotNull
