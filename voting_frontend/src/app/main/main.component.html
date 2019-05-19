@@ -15,9 +15,9 @@
 <div class="ask">
     <mat-form-field appearance="outline" >
         <mat-label>Just ask!</mat-label>
-        <input matInput #message>
+        <input matInput [(ngModel)]="message">
     </mat-form-field>
-    <button color="primary" mat-raised-button (click)="sendMessage(message.value)">Send</button>
+    <button color="primary" mat-raised-button (click)="sendMessage()">Send</button>
 </div>
 
 

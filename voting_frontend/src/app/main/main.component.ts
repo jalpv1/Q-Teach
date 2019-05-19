@@ -10,9 +10,11 @@ import {Answer} from "../answer/answer.model";
 })
 export class MainComponent implements OnInit {
 
-    //data: any;
 
+    message:string = null;
     messages: string[] = [];
+    //my_m: string = '';
+
 
     //private intervalSubscription: Unsubscribable;
 
@@ -34,11 +36,11 @@ export class MainComponent implements OnInit {
     }
 
     //
-    sendMessage(message: string): void {
-        this.httpClient.put('chat', message)
+    sendMessage(): void {
+        this.httpClient.put('chat', this.message)
             .subscribe(() => this.SortByLikes()
-                // () => this.toaster.pop('success', 'Message sended.')
             );
+        this.message = ' ';
     }
 
     //
@@ -58,6 +60,8 @@ export class MainComponent implements OnInit {
     //         this.intervalSubscription.unsubscribe();
     //     }
     // }
+
+
     lastChatQuestionId(): Observable<number> {
         //chatlast
         /*this.httpClient.get< Number>('chat/chatlast').
@@ -65,23 +69,25 @@ export class MainComponent implements OnInit {
         return this.httpClient.get<number>('chat/chatlast');
     }
 
+
     like(answer: Answer<any>): void {
         this.lastChatQuestionId().subscribe(data => {
             const params = new HttpParams().append('chatQuestionId', data.toString());
             this.httpClient.put('chat/like', null, {params})
-                .subscribe(() => console.log('Good'));
+                .subscribe(() => console.log('liked'));
         });
     }
 
-    // SortByLikes(answer: Answer<any>): void {
-    //     //const params = new HttpParams().append('chatQuestion', "fgd1");
-    //     this.httpClient.get<string[]>('http://localhost:8082/chat/sortByLikes')
-    //         .subscribe(str=>console.log(str[3]));
-    //     // this.questionService.SortChatQuest();
+    // getQuestionId(): Observable<number> {
+    //     return
     // }
 
+    // like() void {
+    //     this.
+    // }
+
+
     SortByLikes(): void {
-        //const params = new HttpParams().append('chatQuestion', "fgd1");
         this.httpClient.get<string[]>('http://localhost:8082/chat/sortByLikes')
             .subscribe(str => this.messages = str);
         // return this.httpClient.get<string[]>('chat/sortByLikes');
