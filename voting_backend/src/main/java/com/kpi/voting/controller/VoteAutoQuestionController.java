@@ -4,7 +4,6 @@ package com.kpi.voting.controller;
 import com.kpi.voting.domain.AutoVoteService;
 import com.kpi.voting.dto.RequestVoteDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.endpoint.web.WebEndpointProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,6 @@ import javax.validation.Valid;
 
 
 @RestController
-
 @RequestMapping("autovote")
 public class VoteAutoQuestionController {
 

@@ -4,8 +4,11 @@ import com.kpi.voting.domain.AutoQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -18,7 +21,7 @@ public class AutoQuestionController {
     public @ResponseBody
     AutoQuestion getLastAutoQuestion(@RequestParam("date")  @DateTimeFormat(pattern = "MM-dd-yyyy hh:mm") Date date) {
 
-        return autoquestionService.getLastAutoQuestions(date);
+        return autoquestionService.getLastAutoQuestions(date );
     }
 
     @PostMapping()
@@ -30,5 +33,28 @@ public class AutoQuestionController {
         } else {
             return "Created question [" + question + "] with id = " + id;
         }
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value="NumberVoteYes")
+    public @ResponseBody
+    ArrayList<Integer> getVoteYesCount(){
+        return autoquestionService.findNumberVoteYes();
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value="NumberVoteNo")
+    public @ResponseBody
+    ArrayList<Integer> getVoteNoCount(){
+        return autoquestionService.findNumberVoteNo();
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value= "title")
+    public @ResponseBody()
+    List<String> getTitles() {
+        if (autoquestionService.getNumberOfRows() != 0){
+            System.out.println(autoquestionService.finfTitles());
+            return autoquestionService.finfTitles();}
+
+        else return null;
     }
 }

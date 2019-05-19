@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Roman.Harmash
@@ -27,12 +28,18 @@ public class ChatService {
     private EntityManager entityManager;
 
     public Long createQuestion(String title) {
-        chatRepository.deleteAll();
+        //chatRepository.deleteAll();
         ChatQuestion chat_question = new ChatQuestion();
         chat_question.setQuestion(title);
+
         chat_question = chatRepository.save(chat_question);
         chatRepository.flush();
         return chat_question.getId();
+    }
+    public Long getLastQuestion() {
+
+        Optional<ChatQuestion> chat_question = chatRepository.findTopByOrderByIdDesc();
+       return chat_question.orElse(null).getId();
     }
 
     // save question from the student
@@ -44,7 +51,9 @@ public class ChatService {
     public Long getLike(Long chatQuestionId) {
         Query query = entityManager.createNativeQuery("Select counterLikes from chat_question where chat_question.id=?")
                 .setParameter(1, chatQuestionId);
-        return (Long) (query.getSingleResult());
+        java.math.BigInteger r = (java.math.BigInteger)query.getSingleResult();
+        return r.longValue();
+
     }
 
     //add 1 like to the question with likeid
@@ -68,5 +77,12 @@ public class ChatService {
     // public List<String> getAllMessages() {
     //    return chatRepository.findAllMessages();
     //}
+    /*public List<String> getChatQuestionsAll() {
+        return chatRepository.findAllQuestions();
+    }*/
+    public List<Long> getChatIdAll() {
 
+        System.out.println(chatRepository.findAllId().toString());
+        return chatRepository.findAllId();
+    }
 }

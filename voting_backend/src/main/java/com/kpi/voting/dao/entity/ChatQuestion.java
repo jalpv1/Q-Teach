@@ -18,10 +18,12 @@ public class ChatQuestion {
     @Temporal(TemporalType.DATE)
     private Date createdAt;
 
-    @NotNull
+    //@NotNull
     @Column()
-    private int counterlikes;
-
+    private Long counterlikes  ;
+    public ChatQuestion(){
+    counterlikes = new Long(0);
+}
     public Long getId() {
         return id;
     }
@@ -46,11 +48,11 @@ public class ChatQuestion {
         this.createdAt = createdAt;
     }
 
-    public int getCounterlikes() {
+    public long getCounterlikes() {
         return counterlikes;
     }
 
-    public void setCounterlikes(int counterlikes) {
+    public void setCounterlikes(long counterlikes) {
         this.counterlikes = counterlikes;
     }
 

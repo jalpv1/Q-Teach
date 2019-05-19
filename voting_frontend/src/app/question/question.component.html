@@ -2,8 +2,5 @@
   <p>{{question?.title}}</p>
   <div class="container" *ngFor="let answer of answers">
     <app-answer class="item" [answer]="answer" [disabled]="buttonDisabled" (select)="selectedAnswer($event)"></app-answer>
-    <button (click)="SortByLikes(answer)">Like</button>
   </div>
 </div>
-
-

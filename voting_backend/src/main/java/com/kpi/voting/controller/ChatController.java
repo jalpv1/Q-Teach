@@ -18,14 +18,32 @@ public class ChatController {
     @Autowired
     private ChatService chatService;
 
+
     @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping(value= "sortByLikes")
+    @GetMapping(value = "sortByLikes")
     public @ResponseBody()
     List<String> getMessagesByLikes() {
-        if (chatService.getNumberOfRows() != 0){
+        if (chatService.getNumberOfRows() != 0) {
             System.out.println(chatService.sortByLikes());
-            return chatService.sortByLikes();}
-        else return null;
+            return chatService.sortByLikes();
+        } else return null;
+    }
+/*
+    @GetMapping(value = "getAllQuestions")
+    public @ResponseBody()
+    List<String> getAllQuestions() {
+        if (chatService.getNumberOfRows() != 0) {
+            return chatService.getChatQuestionsAll();
+        } else return null;
+    }*/
+
+    @GetMapping(value="getAllId")
+    public @ResponseBody()
+    List<Long> getAllId(){
+        if (chatService.getNumberOfRows() != 0) {
+            System.out.println(chatService.getChatIdAll().toString());
+            return chatService.getChatIdAll();
+        } else return null;
     }
 
     /*@GetMapping()
@@ -42,8 +60,20 @@ public class ChatController {
 
     @PutMapping("like")
     public void like(@RequestParam Long chatQuestionId) {
-        System.out.println("!!!!!!");
-//        chatService.addLike(chatQuestionId);
+
+        try {
+            chatService.addLike(chatQuestionId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @GetMapping("chatlast")
+    public Long getLast() {
+        Long id;
+        id = chatService.getLastQuestion();
+        return id;
+
     }
 
 }

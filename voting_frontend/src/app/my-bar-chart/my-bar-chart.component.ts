@@ -1,59 +1,52 @@
-import {Component, OnInit} from '@angular/core';
-import {QuestionService} from '../services/question.service';
-import {Label} from 'ng2-charts';
-import { Chart } from 'chart.js';
-
+import { Component, OnInit } from '@angular/core';
+import {AutoQuestionService} from "../services/auto-question.service";
+import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'app-my-bar-chart',
   templateUrl: './my-bar-chart.component.html',
-  styleUrls: ['./my-bar-chart.component.css']
+  styleUrls: ['./my-bar-chart.component.scss']
 })
 export class MyBarChartComponent implements OnInit {
-
+  constructor(private httpClient: HttpClient) { }
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-
-
+  public barChartLabels = ['Question1', 'Question2', 'Question3'];
   public barChartType = 'bar';
   public barChartLegend = true;
-  listVoteYes: number[] = [];
-  listVoteNo: number[] = [];
-  listOfTitles: string[];
+  public numberYes=[];
+  public numberNo=[];
+  public barChartData = [
+    {data: this.numberYes, label: 'Yes'},
+    {data: this.numberNo, label: 'No'}
+  ];
+    getTitles(): void {
+        this.httpClient.get<string[]>('http://localhost:8082/autoquestion/title')
+            .subscribe(str => this.barChartLabels = str);
+        //this.barChartLabels = this.titles;
 
-  public barChartLabels = ['2006', '2007', '2008'];
+    }
+    getVoteNo(): void {
+        this.httpClient.get<number[]>('http://localhost:8082/autoquestion/NumberVoteNo')
+            .subscribe(str => this.numberNo = str);
+        //this.barChartLabels = this.titles;
 
-  // public barChartLabels: {data: Label[]} = {data: this.listOfTitles};
-  constructor(private questionService: QuestionService) {
-  }
+    }
+    getVoteYes(): void {
+        this.httpClient.get<number[]>('http://localhost:8082/autoquestion/NumberVoteYes')
+            .subscribe(str => this.numberYes = str);
+        //this.barChartLabels = this.titles;
 
-  public barChartData = [];
-
-  getAll() {
-    this.getListOfTitles();
-    this.getListOfVoteNoCount();
-    this.getListOfVoteYesCount();
-  }
-
-  getListOfVoteYesCount() {
-    this.questionService.getListOfvoteYesCount().subscribe(list => this.listVoteYes = list);
-  }
-
-  getListOfVoteNoCount() {
-    this.questionService.getListOfvoteNoCount().subscribe(list => this.listVoteNo = list);
-  }
-
-  getListOfTitles(){
-    this.questionService.getListOfTitles()
-      .subscribe(list => this.listOfTitles = list);
-  }
-
-  ngOnInit() {
-    this.listOfTitles=[];
-    this.getListOfVoteYesCount();
-    this.getListOfVoteNoCount();
-    this.getListOfTitles();
-  }
-
+    }
+    ngOnInit() {
+        this.getVoteNo();
+        this.getVoteYes();
+        this.getTitles();
+    }
+    getAll() {
+        this.getTitles();
+        //this.getListOfVoteNoCount();
+        //this.getListOfVoteYesCount();
+    }
 }
