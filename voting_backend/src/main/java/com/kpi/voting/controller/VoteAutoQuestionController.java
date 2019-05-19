@@ -31,4 +31,13 @@ public class VoteAutoQuestionController {
         }
     }
 
+    @GetMapping("yes")
+    public Long getYes(@RequestParam Long autoQuestionId) { return voteService.getYes(autoQuestionId);}
+
+    @GetMapping("no")
+    public Long getNo(@RequestParam Long autoQuestionId) {
+        return voteService.getNo(autoQuestionId);
+    }
+
+
 }

@@ -53,4 +53,13 @@ public class AutoVoteService {
 
         return (newVote.getId() != null);
     }
+
+    // get  current yes's counter
+    public Long getYes(Long autoQuestionId) {
+        return voteRepository.countVoteAutoQuestionByAnswerEqualsAndQuestionId(true, autoQuestionId);
+    }
+
+    public Long getNo(Long autoQuestionId) {
+        return voteRepository.countVoteAutoQuestionByAnswerEqualsAndQuestionId(false, autoQuestionId);
+    }
 }

@@ -24,15 +24,16 @@ public class AutoQuestion implements Comparable<AutoQuestion>{
     private Date createdAt;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
-    private Collection<Vote> votes;
+    private Collection<VoteAutoQuestion> votes;
 
     @Fetch(FetchMode.SUBSELECT)
-    @Formula("(select count(*) from vote where vote.answer = true)")
+    @Formula("(select count(*) from VoteAutoQuestion v  where v.question_id=id AND v.answer = true)")
     private int voteYesCount;
 
     @Fetch(FetchMode.SUBSELECT)
-    @Formula("(select count(*) from vote where vote.answer = false)")
+    @Formula("(select count(*) from VoteAutoQuestion v  where v.question_id=id AND v.answer = false)")
     private int voteNoCount;
+
     //@BooleanFlag
     private boolean asked = false;
     public boolean isAsked() {

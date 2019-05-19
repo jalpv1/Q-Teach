@@ -24,5 +24,16 @@ export class QuestionService {
     const body = AnswerResponse.create(question, answer, this.userService.getUserId());
     return this.http.post('vote', body);
   }
+  public getListOfvoteYesCount() {
+    return this.http.get<number[]>('/question/NumberVoteYes');
+  }
+
+  public getListOfvoteNoCount() {
+    return this.http.get<number[]>('/question/NumberVoteNo');
+  }
+
+  public getListOfTitles(){
+    return this.http.get<string[]>('/question/title');
+  }
 
 }

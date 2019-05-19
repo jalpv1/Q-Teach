@@ -32,7 +32,7 @@ export class AutoQuestionService {
     }
 
     public getLastQuestion(): void {
-        this.http.get<AutoQuestion>('/question/last')
+        this.http.get<AutoQuestion>('/autoquestion/last')
             .subscribe(question => this.question.next(question));
     }
 
@@ -46,6 +46,22 @@ export class AutoQuestionService {
     public answerQuestion(question: AutoQuestion, answer: Answer<any>): Observable<any> {
         const body = AnswerResponse.create(question, answer, this.userService.getUserId());
         return this.http.post('autovote', body);
+    }
+
+    public getListOfTitles(){
+        return this.http.get<string[]>('/auto-question/title');
+    }
+
+    public getListOfvoteYesCount() {
+        return this.http.get<number[]>('/auto-question/NumberVoteYes');
+    }
+
+    public getListOfvoteNoCount() {
+        return this.http.get<number[]>('/auto-question/NumberVoteNo');
+    }
+
+    public getYes(){
+        return this.http.get<number[]>('/autovote/yes');
     }
 
 }

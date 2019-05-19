@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 
-import { autoQuestionComponent } from './auto-question.component';
+import { AutoQuestionComponent } from './auto-question.component';
 
 describe('AutoQuestionComponent', () => {
-  let component: autoQuestionComponent;
-  let fixture: ComponentFixture<autoQuestionComponent>;
+  let component: AutoQuestionComponent;
+  let fixture: ComponentFixture<AutoQuestionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ autoQuestionComponent ]
+      declarations: [ AutoQuestionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(autoQuestionComponent);
+    fixture = TestBed.createComponent(AutoQuestionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

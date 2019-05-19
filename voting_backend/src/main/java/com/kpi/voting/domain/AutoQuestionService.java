@@ -62,4 +62,36 @@ public class AutoQuestionService {
         System.out.println(updatedQuestion);
         System.out.println("=========================");
     }
+
+    /*public  ArrayList<String>findAllTitles(){
+        ArrayList<String> listOfTitles=new ArrayList<>();
+        List<AutoQuestion>question=questionRepository.findAll();
+        for (AutoQuestion i:question )
+            listOfTitles.add(i.getTitle());
+        return listOfTitles;
+    }*/
+
+    public List<String> finfTitles() {
+        return questionRepository.findAllTitles();
+    }
+
+    public ArrayList<Integer> findNumberVoteYes(){
+        ArrayList<Integer> listvoteYes=new ArrayList();
+        List<AutoQuestion>question=questionRepository.findAll();
+        for (AutoQuestion i:question ){
+            listvoteYes.add(i.getVoteYesCount());
+        }
+        return listvoteYes;
+    }
+    public ArrayList<Integer> findNumberVoteNo(){
+        ArrayList<Integer> listvoteNo=new ArrayList();
+        List<AutoQuestion>question=questionRepository.findAll();
+        for (AutoQuestion i:question )
+            listvoteNo.add(i.getVoteNoCount());
+        return listvoteNo;
+    }
+    public int getNumberOfRows() {
+        return questionRepository.getNumOfRows();
+    }
+
 }
