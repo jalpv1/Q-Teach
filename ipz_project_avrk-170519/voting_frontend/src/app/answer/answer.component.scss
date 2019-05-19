@@ -1,0 +1,13 @@
+//:host {
+//  padding: 35px 0px 35px 0px;
+//}
+
+button{
+  margin: 15px;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
