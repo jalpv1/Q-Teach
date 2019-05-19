@@ -8,8 +8,8 @@ import {filter} from 'rxjs/operators';
 //import {Observable} from 'rxjs/Rx';
 
 const answersCached: Answer<boolean>[] =
-    [new Answer('Yes', true, {'background-color': '#c2185'}),
-        new Answer('No', false, {'background-color': '#c2185'})];
+    [new Answer('Yes', true, {'background-color': '#c2185b'}),
+        new Answer('No', false, {'background-color': '#c2185b'})];
 
 @Component({
     selector: 'app-autoquestion',

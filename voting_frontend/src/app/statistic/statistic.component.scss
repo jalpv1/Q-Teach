@@ -1,3 +1,18 @@
 .statistics{
-  margin-top: 80px;
+  margin-top: 100px;
+  h1{
+    text-align: center;
+    color: Grey;
+  }
+}
+
+.graph{
+  margin: 80px;
+}
+
+
+.prob{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

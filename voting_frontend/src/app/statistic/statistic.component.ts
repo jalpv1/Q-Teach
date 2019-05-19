@@ -6,6 +6,14 @@ import {Answer} from "../answer/answer.model";
 import {AutoQuestion} from "../auto-question/auto-question.model";
 //import {Router} from "@angular/router";
 
+
+export interface Probability {
+    position: number;
+    event: number;
+    prob: number;
+}
+
+
 @Component({
     selector: 'app-statistic',
     templateUrl: './statistic.component.html',
@@ -18,7 +26,9 @@ export class StatisticComponent implements OnInit {
     countYes :bigint;
     countNo :bigint;
     titles:string[] = [];
-    test:string = "Fucking fuck";
+    test:string = "hey";
+
+
 
     constructor(private httpClient: HttpClient) {}
 

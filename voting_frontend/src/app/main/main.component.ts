@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
 
     message:string = null;
     messages: string[] = [];
+    isDisabled: boolean = false;
     //my_m: string = '';
 
 
@@ -76,6 +77,7 @@ export class MainComponent implements OnInit {
             this.httpClient.put('chat/like', null, {params})
                 .subscribe(() => console.log('liked'));
         });
+        this.isDisabled = true;
     }
 
     // getQuestionId(): Observable<number> {
