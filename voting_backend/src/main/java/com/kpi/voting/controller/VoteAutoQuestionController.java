@@ -24,6 +24,7 @@ public class VoteAutoQuestionController {
     @PostMapping(produces = "application/json")
     public ResponseEntity<?> answer(@Valid @RequestBody RequestVoteDto vote) {
         try {
+            vote.setUserId(new Long(1));
             voteService.vote(vote);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
