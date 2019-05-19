@@ -23,15 +23,26 @@ public class AutoQuestion implements Comparable<AutoQuestion>{
     @Temporal(TemporalType.TIME)
     private Date createdAt;
 
+    public Date getToaskAt() {
+        return toaskAt;
+    }
+
+    public void setToaskAt(Date toaskAt) {
+        this.toaskAt = toaskAt;
+    }
+
+    @Temporal(TemporalType.TIME)
+    private Date toaskAt;
+
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private Collection<VoteAutoQuestion> votes;
 
     @Fetch(FetchMode.SUBSELECT)
-    @Formula("(select count(*) from VoteAutoQuestion v  where v.question_id=id AND v.answer = true)")
+    @Formula("(select count(*) from autovote v  where v.question_id=id AND v.answer = true)")
     private int voteYesCount;
 
     @Fetch(FetchMode.SUBSELECT)
-    @Formula("(select count(*) from VoteAutoQuestion v  where v.question_id=id AND v.answer = false)")
+    @Formula("(select count(*) from autovote v  where v.question_id=id AND v.answer = false)")
     private int voteNoCount;
 
     //@BooleanFlag
@@ -47,7 +58,7 @@ public class AutoQuestion implements Comparable<AutoQuestion>{
 
     @Override
     public int compareTo(AutoQuestion o) {
-        return getCreatedAt().compareTo(o.getCreatedAt());
+        return getToaskAt().compareTo(o.getToaskAt());
     }
     public int getVoteYesCount() {
         return voteYesCount;

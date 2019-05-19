@@ -20,7 +20,7 @@ public interface AutoQuestionRepository extends JpaRepository<AutoQuestion, Long
     Optional<AutoQuestion> findById(Long id);
 
     Optional<AutoQuestion> findBycreatedAt(Date createdAt);
-    @Query(value = "select a from AutoQuestion a where a.createdAt > :time")
+    @Query(value = "select a from AutoQuestion a where a.toaskAt > :time")
     List<AutoQuestion> findAllByCreatedAtAfterAndAskedFalse(Date time);
 
     @Query("SELECT  count(q) FROM AutoQuestion  q")
