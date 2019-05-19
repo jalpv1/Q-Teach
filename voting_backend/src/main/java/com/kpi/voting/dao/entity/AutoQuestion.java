@@ -38,11 +38,11 @@ public class AutoQuestion implements Comparable<AutoQuestion>{
     private Collection<VoteAutoQuestion> votes;
 
     @Fetch(FetchMode.SUBSELECT)
-    @Formula("(select count(*) from VoteAutoQuestion v  where v.question_id=id AND v.answer = true)")
+    @Formula("(select count(*) from autovote v  where v.question_id=id AND v.answer = true)")
     private int voteYesCount;
 
     @Fetch(FetchMode.SUBSELECT)
-    @Formula("(select count(*) from VoteAutoQuestion v  where v.question_id=id AND v.answer = false)")
+    @Formula("(select count(*) from autovote v  where v.question_id=id AND v.answer = false)")
     private int voteNoCount;
 
     //@BooleanFlag
