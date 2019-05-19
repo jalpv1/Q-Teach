@@ -49,7 +49,8 @@ public class AutoQuestionService {
         //questionRepository.deleteAll();
         AutoQuestion question = new AutoQuestion();
         question.setTitle(title);
-        question.setCreatedAt(date);
+        question.setCreatedAt(new Date());
+        question.setToaskAt(date);
         question = questionRepository.save(question);
         questionRepository.flush();
         return question.getId();

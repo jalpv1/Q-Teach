@@ -47,9 +47,9 @@ export class QuestionComponent implements OnInit, OnDestroy {
     this.questionService.answerQuestion(this.question, answer)
       .subscribe(() => {
           this.buttonDisabled = true;
-          this.toaster.pop('success', 'Thanks for answer.');
-        },
-        err => this.toaster.pop('error', err.error));
+          //this.toaster.pop('success', 'Thanks for answer.');
+        })
+        //err => this.toaster.pop('error', err.error));
   }
 
   ngOnDestroy(): void {

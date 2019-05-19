@@ -10,14 +10,16 @@ public class VoteAutoQuestion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    //@NotNull
     private Boolean answer;
 
     @ManyToOne
     @JoinColumn(name = "question_id", nullable = false)
     private AutoQuestion question;
 
-    @NotNull
+    //@NotNull
+    @GeneratedValue()
+
     private Long userId;
 
     public Long getId() {

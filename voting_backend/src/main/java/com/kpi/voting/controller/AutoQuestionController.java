@@ -4,6 +4,8 @@ import com.kpi.voting.domain.AutoQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.Objects;
@@ -16,8 +18,11 @@ public class AutoQuestionController {
 
     @GetMapping(value = "auto")
     public @ResponseBody
-    AutoQuestion getLastAutoQuestion(@RequestParam("date")  @DateTimeFormat(pattern = "MM-dd-yyyy hh:mm") Date date) {
-
+    AutoQuestion getLastAutoQuestion(@RequestParam("date") @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm") Date date) {
+//@DateTimeFormat(pattern = "MM-dd-yyyy hh:mm")
+       // Date dateNow = new Date();
+       // System.out.println(dateNow);
+       // SimpleDateFormat formatForDateNow = new SimpleDateFormat("MM-dd-yyyy hh:mm");
         return autoquestionService.getLastAutoQuestions(date );
     }
 
